@@ -2,7 +2,7 @@
   <div class="container">
     <CThemeProvider>
       <CColorModeProvider>
-        <CBox font-family="body" as="main" class="main" w="100vw" h="100vh">
+        <CBox font-family="body" as="main" class="main" w="99vw" h="150vh">
           <CReset />
           <CFlex
             w="100%"

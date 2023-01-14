@@ -39,7 +39,7 @@
   </CBox>
 </template>
 
-<script lang="ts">
+<script>
 import {
   CBox,
   CStack,

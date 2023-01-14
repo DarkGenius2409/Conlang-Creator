@@ -91,6 +91,7 @@ import {
 } from 'firebase/firestore'
 import { v4 as uuidv4 } from 'uuid'
 import AuthenticationCheck from '~/components/AuthenticationCheck.vue'
+import { onAuthStateChanged } from 'firebase/auth'
 
 export default {
   name: 'DashboardPage',
@@ -111,16 +112,20 @@ export default {
     }
   },
   async mounted() {
-    const q = query(
-      collection(db, 'conlangs'),
-      where('creator', '==', auth.currentUser?.email),
-      orderBy('dateCreated', 'desc')
-    )
-    const querySnapshot = await getDocs(q)
-    querySnapshot.forEach((doc) => {
-      let conlang = doc.data()
-      conlang.id = doc.id
-      this.conlangs.push(conlang)
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const q = query(
+          collection(db, 'conlangs'),
+          where('creator', '==', auth.currentUser?.email),
+          orderBy('dateCreated', 'desc')
+        )
+        const querySnapshot = await getDocs(q)
+        querySnapshot.forEach((doc) => {
+          let conlang = doc.data()
+          conlang.id = doc.id
+          this.conlangs.push(conlang)
+        })
+      }
     })
   },
   methods: {

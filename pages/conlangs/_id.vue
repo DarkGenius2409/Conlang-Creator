@@ -5,14 +5,34 @@
         {{ conlang.name }} | {{ viewGrammar ? 'Grammar' : 'Phonology' }}
       </CHeading>
       <CDivider borderWidth="0.15625rem" borderColor="gray" />
-      <CTabs is-fitted variant-color="blue">
-        <CTabList>
-          <CTab @click="switchToPhonology"> Phonology </CTab>
-          <CTab @click="switchToGrammar"> Grammar </CTab>
-        </CTabList>
-      </CTabs>
+      <CStack is-inline spacing-x="1%">
+        <CButton
+          w="49%"
+          borderRadius="1"
+          borderBottom="1px"
+          variant="ghost"
+          fontSize="xl"
+          variant-color="blue"
+          color="blue.600"
+          @click="switchToPhonology"
+        >
+          Phonology
+        </CButton>
+        <CButton
+          w="49%"
+          borderRadius="1"
+          borderBottom="1px"
+          variant="ghost"
+          fontSize="xl"
+          variant-color="blue"
+          color="blue.600"
+          @click="switchToGrammar"
+        >
+          Grammar
+        </CButton>
+      </CStack>
       <Grammar v-if="viewGrammar" :viewer="user" />
-      <Phonology v-else :viewer="user" />
+      <Phonology v-else :viewer="user" :conlangRef="conlangRef" />
     </CBox>
   </AuthenticationCheck>
 </template>
@@ -28,6 +48,7 @@ export default {
       conlang: {},
       viewGrammar: false,
       user: '',
+      conlangRef: '',
     }
   },
   methods: {
@@ -69,6 +90,7 @@ export default {
   },
   async mounted() {
     const docRef = doc(db, 'conlangs', this.$route.params.id)
+    this.conlangRef = docRef
     let data = await getDoc(docRef)
     data = data.data()
     data.dateCreated = this.date(data.dateCreated)
