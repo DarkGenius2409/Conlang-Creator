@@ -8,7 +8,18 @@
     borderRadius="10"
   >
     <CStack>
-      <CHeading>{{ name }}</CHeading>
+      <CHeading>
+        {{ name }}
+        <span>
+          <CButton
+            @click="$emit('delete')"
+            variant="outline"
+            borderColor="red.600"
+            color="red.600"
+            >Delete</CButton
+          >
+        </span>
+      </CHeading>
       <CText>{{ creator }} | created {{ month }} {{ date }}, {{ year }}</CText>
       <NuxtLink :to="`/conlangs/${id}`">
         <CButton bg="blue.600" color="white">Go To Conlang Page</CButton>

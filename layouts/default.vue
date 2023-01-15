@@ -17,6 +17,17 @@
             </NuxtLink>
 
             <CStack as="nav" spacing="5" is-inline>
+              <NuxtLink to="/conlangs">
+                <CButton
+                  variant="ghost"
+                  fontSize="xl"
+                  variant-color="white"
+                  color="white"
+                  mx="2.5"
+                >
+                  Browse
+                </CButton>
+              </NuxtLink>
               <NuxtLink to="/dashboard">
                 <CButton
                   variant="ghost"
@@ -25,8 +36,8 @@
                   color="white"
                   mx="2.5"
                 >
-                  Dashboard</CButton
-                >
+                  Dashboard
+                </CButton>
               </NuxtLink>
               <NuxtLink to="/auth" v-if="!signedIn">
                 <CButton

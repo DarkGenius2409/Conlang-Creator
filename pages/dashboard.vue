@@ -21,7 +21,28 @@
               :name="conlang.name"
               :creator="conlang.creator"
               :createdAt="conlang.dateCreated"
+              @delete="openDelete"
             />
+            <CModal :is-open="isDeleteOpen" :on-close="closeDelete">
+              <CModalContent ref="content">
+                <CModalHeader>
+                  Are you sure you want to delete this rule?
+                </CModalHeader>
+                <CModalCloseButton />
+                <CModalFooter>
+                  <CButton
+                    @click="deleteConlang(conlang.id)"
+                    bg="red.600"
+                    color="white"
+                    mr="3"
+                  >
+                    Delete
+                  </CButton>
+                  <CButton @click="closeDelete">Cancel</CButton>
+                </CModalFooter>
+              </CModalContent>
+              <CModalOverlay />
+            </CModal>
           </CBox>
         </CSimpleGrid>
         <CBox pos="absolute" top="90%" left="92.5%" w="5%" h="5%">
@@ -88,6 +109,7 @@ import {
   setDoc,
   serverTimestamp,
   orderBy,
+  deleteDoc,
 } from 'firebase/firestore'
 import { v4 as uuidv4 } from 'uuid'
 import AuthenticationCheck from '~/components/AuthenticationCheck.vue'
@@ -109,6 +131,7 @@ export default {
       signedIn: false,
       isOpen: false,
       name: '',
+      isDeleteOpen: false,
     }
   },
   async mounted() {
@@ -135,15 +158,37 @@ export default {
     close() {
       this.isOpen = false
     },
+    openDelete() {
+      this.isDeleteOpen = true
+    },
+    closeDelete() {
+      this.isDeleteOpen = false
+    },
     async createConlang() {
       const id = uuidv4()
+      let consonants = []
+      for (let i = 0; i < 108; i++) {
+        consonants.push('')
+      }
+      let vowels = []
+      for (let i = 0; i < 21; i++) {
+        vowels.push('')
+      }
       const data = {
         name: this.name,
         creator: auth.currentUser?.email,
         dateCreated: serverTimestamp(),
+        phonotacticRules: ['Sample Rule'],
+        consonants,
+        vowels,
       }
       await setDoc(doc(db, 'conlangs', id), data)
       this.$router.push({ path: `/conlangs/${id}` })
+    },
+    async deleteConlang(id) {
+      console.log('Deleting')
+      await deleteDoc(doc(db, 'conlangs', id))
+      this.isDeleteOpen = false
     },
   },
 }
