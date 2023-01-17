@@ -4,13 +4,14 @@
       <CBox w="75%" mx="2.5%">
         <SoundGrid :conlangRef="conlangRef" :viewer="viewer" />
       </CBox>
-
+      <CDivider
+        orientation="vertical"
+        my="2%"
+        borderColor="gray.400"
+        h="100vh"
+      />
       <CBox w="25%" mx="2.5%">
-        <PhonotacticsList
-          :conlangRef="conlangRef"
-          :viewer="viewer"
-          @addRule="(rule) => $emit('addRule', rule)"
-        />
+        <PhonotacticsList :conlangRef="conlangRef" :viewer="viewer" />
       </CBox>
     </CStack>
   </CBox>

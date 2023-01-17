@@ -14,7 +14,7 @@
           {{ consonantEditText }}
         </CButton>
       </CStack>
-      <CSimpleGrid :columns="13" spacing-x="1%" spacing-y="1%">
+      <CSimpleGrid :columns="13">
         <CBox />
         <CBox v-for="(articulation, i) in articulations" :key="i">
           {{ articulation }}
@@ -26,6 +26,7 @@
           v-model="nasals[i]"
           :isReadOnly="!editConsonants"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Plosives</CBox>
         <CInput
@@ -34,6 +35,7 @@
           v-model="plosives[i]"
           :isReadOnly="!editConsonants"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Affricates</CBox>
         <CInput
@@ -42,6 +44,7 @@
           v-model="affricates[i]"
           :isReadOnly="!editConsonants"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Fricatives</CBox>
         <CInput
@@ -50,6 +53,7 @@
           v-model="fricatives[i]"
           :isReadOnly="!editConsonants"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Approximants</CBox>
         <CInput
@@ -58,6 +62,7 @@
           v-model="approximants[i]"
           :isReadOnly="!editConsonants"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Taps/Flaps</CBox>
         <CInput
@@ -66,6 +71,7 @@
           v-model="tapsFlaps[i]"
           :isReadOnly="!editConsonants"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Trills</CBox>
         <CInput
@@ -74,6 +80,7 @@
           v-model="trills[i]"
           :isReadOnly="!editConsonants"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Clicks</CBox>
         <CInput
@@ -82,6 +89,7 @@
           v-model="clicks[i]"
           :isReadOnly="!editConsonants"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Implosives</CBox>
         <CInput
@@ -90,6 +98,7 @@
           v-model="implosives[i]"
           :isReadOnly="!editConsonants"
           borderColor="blue.600"
+          borderRadius="0"
         />
       </CSimpleGrid>
     </CStack>
@@ -106,7 +115,7 @@
           >{{ vowelEditText }}</CButton
         >
       </CStack>
-      <CSimpleGrid :columns="4" spacing-x="1%" spacing-y="1%" maxW="50%">
+      <CSimpleGrid :columns="4" maxW="50%">
         <CBox />
         <CBox v-for="(backness, i) in backnesses" :key="i">
           {{ backness }}
@@ -119,6 +128,7 @@
           minW="4rem"
           :isReadOnly="!editVowels"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Near-close</CBox>
         <CInput
@@ -127,6 +137,7 @@
           v-model="nearClose[i - 1]"
           :isReadOnly="!editVowels"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Close-mid</CBox>
         <CInput
@@ -135,6 +146,7 @@
           v-model="closeMid[i - 1]"
           :isReadOnly="!editVowels"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Mid</CBox>
         <CInput
@@ -143,6 +155,7 @@
           v-model="mid[i - 1]"
           :isReadOnly="!editVowels"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Open-mid</CBox>
         <CInput
@@ -151,6 +164,7 @@
           v-model="openMid[i - 1]"
           :isReadOnly="!editVowels"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Near-open</CBox>
         <CInput
@@ -159,6 +173,7 @@
           v-model="nearOpen[i - 1]"
           :isReadOnly="!editVowels"
           borderColor="blue.600"
+          borderRadius="0"
         />
         <CBox>Open</CBox>
         <CInput
@@ -167,6 +182,7 @@
           v-model="open[i - 1]"
           :isReadOnly="!editVowels"
           borderColor="blue.600"
+          borderRadius="0"
         />
       </CSimpleGrid>
     </CStack>

@@ -2,7 +2,7 @@
   <CBox p="5%" h="100%">
     <CStack position="relative" h="100%">
       <CStack is-inline>
-        <CText fontSize="3xl">Phonotactics</CText>
+        <CText fontSize="3xl">Syntax Rules</CText>
         <CButton
           @click="toggleEdit"
           v-if="showEdit"
@@ -29,9 +29,8 @@
             color="red.300"
             v-if="edit"
             @click="open"
+            >X</CButton
           >
-            X
-          </CButton>
           <CModal :is-open="isOpen" :on-close="close">
             <CModalContent ref="content">
               <CModalHeader>
@@ -92,7 +91,7 @@ export default {
       if (user) {
         const querySnapshot = await getDoc(this.conlangRef)
         this.conlang = querySnapshot.data()
-        this.rules = this.conlang.phonotacticRules
+        this.rules = this.conlang.syntaxRules
       }
     })
   },
@@ -106,9 +105,9 @@ export default {
   },
   methods: {
     async toggleEdit() {
-      const rules = this.conlang.phonotacticRules
+      const rules = this.conlang.syntaxRules
       if (this.edit == true) {
-        this.conlang.phonotacticRules = this.rules
+        this.conlang.syntaxRules = this.rules
         await setDoc(this.conlangRef, this.conlang)
         this.edit = false
       } else {

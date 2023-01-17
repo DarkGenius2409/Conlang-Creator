@@ -181,12 +181,13 @@ export default {
         phonotacticRules: ['Sample Rule'],
         consonants,
         vowels,
+        grids: [],
+        syntaxRules: ['Sample Rule'],
       }
       await setDoc(doc(db, 'conlangs', id), data)
       this.$router.push({ path: `/conlangs/${id}` })
     },
     async deleteConlang(id) {
-      console.log('Deleting')
       await deleteDoc(doc(db, 'conlangs', id))
       this.isDeleteOpen = false
     },

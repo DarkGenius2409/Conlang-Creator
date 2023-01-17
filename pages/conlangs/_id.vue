@@ -2,7 +2,7 @@
   <AuthenticationCheck>
     <CBox p="5%">
       <CHeading fontSize="6xl">
-        {{ conlang.name }} | {{ viewGrammar ? 'Grammar' : 'Phonology' }}
+        {{ conlang.name }} | {{ sectionText }}
       </CHeading>
       <CDivider borderWidth="0.15625rem" borderColor="gray" />
       <CStack is-inline spacing-x="1%">
@@ -30,9 +30,34 @@
         >
           Grammar
         </CButton>
+        <CButton
+          w="49%"
+          borderRadius="1"
+          borderBottom="1px"
+          variant="ghost"
+          fontSize="xl"
+          variant-color="blue"
+          color="blue.600"
+          @click="switchToDictionary"
+        >
+          Dictionary
+        </CButton>
       </CStack>
-      <Grammar v-if="viewGrammar" :viewer="user" />
-      <Phonology v-else :viewer="user" :conlangRef="conlangRef" />
+      <Grammar
+        v-if="viewGrammar == true"
+        :viewer="user"
+        :conlangRef="conlangRef"
+      />
+      <Phonology
+        v-if="viewPhonology == true"
+        :viewer="user"
+        :conlangRef="conlangRef"
+      />
+      <Dictionary
+        v-if="viewDictionary == true"
+        :viewer="user"
+        :conlangRef="conlangRef"
+      />
     </CBox>
   </AuthenticationCheck>
 </template>
@@ -47,9 +72,24 @@ export default {
     return {
       conlang: {},
       viewGrammar: false,
+      viewPhonology: true,
+      viewDictionary: false,
       user: '',
       conlangRef: '',
     }
+  },
+  computed: {
+    sectionText() {
+      if (this.viewGrammar == true) {
+        return 'Grammar'
+      }
+      if (this.viewPhonology == true) {
+        return 'Phonology'
+      }
+      if (this.viewDictionary == true) {
+        return 'Dictionary'
+      }
+    },
   },
   methods: {
     day(createdAt) {
@@ -83,9 +123,30 @@ export default {
     },
     switchToGrammar() {
       this.viewGrammar = true
+      if (this.viewPhonology == true) {
+        this.viewPhonology = false
+      }
+      if (this.viewDictionary == true) {
+        this.viewDictionary = false
+      }
     },
     switchToPhonology() {
-      this.viewGrammar = false
+      this.viewPhonology = true
+      if (this.viewGrammar == true) {
+        this.viewGrammar = false
+      }
+      if (this.viewDictionary == true) {
+        this.viewDictionary = false
+      }
+    },
+    switchToDictionary() {
+      this.viewDictionary = true
+      if (this.viewPhonology == true) {
+        this.viewPhonology = false
+      }
+      if (this.viewGrammar == true) {
+        this.viewGrammar = false
+      }
     },
   },
   async mounted() {
