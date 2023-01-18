@@ -8,7 +8,7 @@
             <CStack is-inline py="3%">
               <CText fontSize="3xl">{{ grid.heading }}</CText>
               <CButton
-                @click="grid.edit = !grid.edit"
+                @click="toggleEdit(i)"
                 v-if="showEdit"
                 mt="0.75%"
                 size="sm"
@@ -21,6 +21,7 @@
             <CBox py="3%">
               <CIconButton
                 icon="close"
+                aria-label="delete"
                 variant-color="red"
                 variant="outline"
                 @click="deleteGrid(i)"
@@ -120,13 +121,13 @@ export default {
     },
   },
   methods: {
-    async toggleEdit() {
-      if (this.edit == true) {
+    async toggleEdit(i) {
+      if (this.grids[i].edit == true) {
+        this.grids[i].edit = false
         this.conlang.grids = this.grids
         await setDoc(this.conlangRef, this.conlang)
-        this.edit = false
       } else {
-        this.edit = true
+        this.grids[i].edit = true
       }
     },
     open() {

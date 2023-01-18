@@ -2,7 +2,7 @@
   <div class="container">
     <CThemeProvider>
       <CColorModeProvider>
-        <CBox font-family="body" as="main" class="main" w="99vw" h="150vh">
+        <CBox font-family="body" as="main" class="main" w="99.33vw" h="100vh">
           <CReset />
           <CFlex
             w="100%"
@@ -116,7 +116,6 @@ export default {
 
 <style>
 .nav {
-  background-color: #226ce0;
   font-family: 'Titillium Web', sans-serif;
 }
 </style>

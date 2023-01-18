@@ -57,7 +57,6 @@ export default {
 
 <style>
 .container {
-  background-color: #dff6ff;
   font-family: 'Titillium Web', sans-serif;
 }
 </style>
