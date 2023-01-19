@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CStack p="3%">
+    <CStack py="3%" pr="1%">
       <CStack is-inline>
         <CText fontSize="3xl">Consonants</CText>
         <CButton
@@ -102,7 +102,7 @@
         />
       </CSimpleGrid>
     </CStack>
-    <CStack p="3%">
+    <CStack py="3%" pr="1%">
       <CStack is-inline>
         <CText fontSize="3xl">Vowels</CText>
         <CButton
