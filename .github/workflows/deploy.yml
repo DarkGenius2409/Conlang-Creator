@@ -15,4 +15,4 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm install --global surge
-      - run: surge  ./build conlang-creator.surge.sh --token 41c52c55538e433f1cf7ef0f5d737a5a
+      - run: surge  ./.nuxt conlang-creator.surge.sh --token 41c52c55538e433f1cf7ef0f5d737a5a
