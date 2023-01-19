@@ -13,6 +13,6 @@ jobs:
         with:
           node-version: 12
       - run: npm ci
-      - run: npm run build
+      - run: npm run generate
       - run: npm install --global surge
       - run: surge  ./dist conlang-creator.surge.sh --token 41c52c55538e433f1cf7ef0f5d737a5a
