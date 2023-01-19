@@ -3,7 +3,7 @@
     <CBox d="flex" w="100vw" h="100vh" py="15%" px="10%" textAlign="center">
       <CStack textAlign="center" w="100%">
         <CText class="title" color="blue.600">
-          <i> Welcome to Conlang Creator!</i>
+          <i> Welcome to Conlang Creator</i>
         </CText>
         <CText fontSize="xl" color="black">
           The easiest way to get started with conlanging
