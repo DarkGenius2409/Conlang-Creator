@@ -17,7 +17,7 @@
       <CSimpleGrid :columns="13">
         <CBox />
         <CBox v-for="(articulation, i) in articulations" :key="i">
-          {{ articulation }}
+          <CText font-size="sm"> {{ articulation }}</CText>
         </CBox>
         <CBox>Nasals</CBox>
         <CInput
