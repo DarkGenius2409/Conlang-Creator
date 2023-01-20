@@ -1,8 +1,8 @@
 <template>
   <CBox minH="100%" position="relative">
-    <CBox p="3%" h="150%">
+    <CBox py="3%" pr="1%" h="150%">
       <CText fontSize="4xl">Morphology</CText>
-      <CStack px="3%">
+      <CStack px="2%">
         <CBox v-for="(grid, i) in grids" :key="i" maxW="50%">
           <CFlex justify="space-between">
             <CStack is-inline py="3%">
