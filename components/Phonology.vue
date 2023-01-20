@@ -1,7 +1,7 @@
 <template>
   <CBox>
-    <CStack is-inline h="50vh" spacing-x="5%">
-      <CBox w="75%" mx="2.5%">
+    <CStack is-inline h="50vh" spacing-x="5%" p="0px">
+      <CBox w="82.5%" mx="2.5%">
         <SoundGrid :conlangRef="conlangRef" :viewer="viewer" />
       </CBox>
       <CDivider
@@ -10,7 +10,7 @@
         borderColor="gray.400"
         h="100vh"
       />
-      <CBox w="25%" mx="2.5%">
+      <CBox w="17.5%" mx="2.5%">
         <PhonotacticsList :conlangRef="conlangRef" :viewer="viewer" />
       </CBox>
     </CStack>
