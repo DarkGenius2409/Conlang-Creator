@@ -14,9 +14,9 @@
           {{ consonantEditText }}
         </CButton>
       </CStack>
-      <CSimpleGrid :columns="13">
+      <CSimpleGrid :columns="13" text-align="center">
         <CBox />
-        <CBox v-for="(articulation, i) in articulations" :key="i">
+        <CBox v-for="(articulation, i) in articulations" :key="i" p="5%">
           <CText font-size="sm"> {{ articulation }}</CText>
         </CBox>
         <CBox fontSize="sm">Nasals</CBox>
@@ -115,7 +115,7 @@
           >{{ vowelEditText }}</CButton
         >
       </CStack>
-      <CSimpleGrid :columns="4" maxW="50%">
+      <CSimpleGrid :columns="4" maxW="50%" text-align="center">
         <CBox />
         <CBox v-for="(backness, i) in backnesses" :key="i">
           {{ backness }}
