@@ -19,7 +19,7 @@
         <CBox v-for="(articulation, i) in articulations" :key="i">
           <CText font-size="sm"> {{ articulation }}</CText>
         </CBox>
-        <CBox>Nasals</CBox>
+        <CBox fontSize="sm">Nasals</CBox>
         <CInput
           v-for="(sound, i) in nasals"
           :key="i"
@@ -28,7 +28,7 @@
           borderColor="blue.600"
           borderRadius="0"
         />
-        <CBox>Plosives</CBox>
+        <CBox fontSize="sm">Plosives</CBox>
         <CInput
           v-for="(sound, i) in plosives"
           :key="i"
@@ -37,7 +37,7 @@
           borderColor="blue.600"
           borderRadius="0"
         />
-        <CBox>Affricates</CBox>
+        <CBox fontSize="sm">Affricates</CBox>
         <CInput
           v-for="(sound, i) in affricates"
           :key="i"
@@ -46,7 +46,7 @@
           borderColor="blue.600"
           borderRadius="0"
         />
-        <CBox>Fricatives</CBox>
+        <CBox fontSize="sm">Fricatives</CBox>
         <CInput
           v-for="(sound, i) in fricatives"
           :key="i"
@@ -55,7 +55,7 @@
           borderColor="blue.600"
           borderRadius="0"
         />
-        <CBox>Approximants</CBox>
+        <CBox fontSize="sm">Approximants</CBox>
         <CInput
           v-for="(sound, i) in approximants"
           :key="i"
@@ -64,7 +64,7 @@
           borderColor="blue.600"
           borderRadius="0"
         />
-        <CBox>Taps/Flaps</CBox>
+        <CBox fontSize="sm">Taps/Flaps</CBox>
         <CInput
           v-for="(sound, i) in tapsFlaps"
           :key="i"
@@ -73,7 +73,7 @@
           borderColor="blue.600"
           borderRadius="0"
         />
-        <CBox>Trills</CBox>
+        <CBox fontSize="sm">Trills</CBox>
         <CInput
           v-for="(sound, i) in trills"
           :key="i"
@@ -82,7 +82,7 @@
           borderColor="blue.600"
           borderRadius="0"
         />
-        <CBox>Clicks</CBox>
+        <CBox fontSize="sm">Clicks</CBox>
         <CInput
           v-for="(sound, i) in clicks"
           :key="i"
@@ -91,7 +91,7 @@
           borderColor="blue.600"
           borderRadius="0"
         />
-        <CBox>Implosives</CBox>
+        <CBox fontSize="sm">Implosives</CBox>
         <CInput
           v-for="(sound, i) in implosives"
           :key="i"
