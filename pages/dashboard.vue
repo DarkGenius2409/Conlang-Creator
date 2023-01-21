@@ -192,6 +192,7 @@ export default {
             columns: 4,
             edit: false,
             values,
+            editDetails: false,
           },
         ],
         syntaxRules: ['Sample Rule'],
