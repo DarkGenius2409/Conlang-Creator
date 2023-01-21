@@ -30,7 +30,8 @@
 
 <script>
 import { query, getDocs, collection, where, orderBy } from 'firebase/firestore'
-import { db } from '~/plugins/firebase'
+import { db, auth } from '~/plugins/firebase'
+import { signInAnonymously } from 'firebase/auth'
 
 export default {
   name: 'BrowseConlangs',
@@ -40,6 +41,13 @@ export default {
     }
   },
   async mounted() {
+    if (!auth.currentUser) {
+      signInAnonymously(auth).catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        // ...
+      })
+    }
     const q = query(collection(db, 'conlangs'), orderBy('dateCreated', 'desc'))
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {

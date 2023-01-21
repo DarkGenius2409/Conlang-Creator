@@ -16,6 +16,7 @@
             variant="outline"
             borderColor="red.600"
             color="red.600"
+            v-if="viewDelete"
             >Delete</CButton
           >
         </span>
@@ -29,6 +30,8 @@
 </template>
 
 <script>
+import { auth } from '~/plugins/firebase'
+
 export default {
   name: 'LangCard',
   props: ['name', 'createdAt', 'creator', 'id'],
@@ -56,6 +59,9 @@ export default {
     },
     year: function () {
       return new Date(this.$props.createdAt.seconds * 1000).getFullYear()
+    },
+    viewDelete: function () {
+      return this.creator == auth.currentUser.email
     },
   },
 }
