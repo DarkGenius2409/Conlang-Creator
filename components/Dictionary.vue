@@ -69,6 +69,7 @@
               variant-color="red"
               variant="outline"
               @click="deleteWord(i)"
+              v-if="showEdit"
             />
           </CFlex>
         </CBox>
