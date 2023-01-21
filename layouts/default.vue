@@ -100,7 +100,9 @@ export default {
   mounted() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        this.signedIn = true
+        if (!user.isAnonymous) {
+          this.signedIn = true
+        }
       } else {
         this.signedIn = false
       }
