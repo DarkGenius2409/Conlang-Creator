@@ -25,6 +25,7 @@
                 variant-color="red"
                 variant="outline"
                 @click="deleteGrid(i)"
+                v-if="showEdit"
               />
             </CBox>
           </CFlex>
