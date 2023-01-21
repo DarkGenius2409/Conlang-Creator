@@ -6,6 +6,50 @@
         <CBox v-for="(grid, i) in grids" :key="i" maxW="50%">
           <CFlex justify="space-between">
             <CStack is-inline py="3%">
+              <CIconButton
+                icon="info"
+                aria-label="details"
+                variant-color="gray"
+                variant="ghost"
+                @click="openGridEdit = true"
+                my="3%"
+                v-if="showEdit"
+              />
+              <CModal :is-open="openGridEdit" :on-close="closeGridEdit">
+                <CModalContent ref="content">
+                  <CModalHeader>Grid Details</CModalHeader>
+                  <CModalCloseButton />
+                  <CModalBody>
+                    <CInput
+                      my="2%"
+                      v-model="gridEditRows"
+                      placeholder="Rows"
+                      :isReadOnly="!grid.editDetails"
+                    />
+                    <CInput
+                      my="2%"
+                      v-model="gridEditColumns"
+                      placeholder="Columns"
+                      :isReadOnly="!grid.editDetails"
+                    />
+                  </CModalBody>
+                  <CModalFooter>
+                    <CButton
+                      @click="saveGrid(i)"
+                      v-if="showEdit"
+                      mt="0.75%"
+                      size="sm"
+                      bg="blue.600"
+                      color="white"
+                      mr="3%"
+                    >
+                      {{ grid.editDetails ? 'Save' : 'Edit' }}
+                    </CButton>
+                    <CButton @click="closeGridEdit">Cancel</CButton>
+                  </CModalFooter>
+                </CModalContent>
+                <CModalOverlay />
+              </CModal>
               <CText fontSize="3xl">{{ grid.heading }}</CText>
               <CButton
                 @click="toggleEdit(i)"
@@ -106,6 +150,9 @@ export default {
       newGridCols: '',
       newGridRows: '',
       newGridHeading: '',
+      openGridEdit: false,
+      gridEditColumns: '',
+      gridEditRows: '',
     }
   },
   async mounted() {
@@ -162,6 +209,29 @@ export default {
       this.grids.splice(i, 1)
       this.conlang.grids = this.grids
       await setDoc(this.conlangRef, this.conlang)
+    },
+    async saveGrid(i) {
+      let values = []
+      for (let i = 0; i < this.gridEditRows; i++) {
+        for (let j = 0; j < this.gridEditColumns; j++) {
+          values.push('')
+        }
+      }
+      if (this.grids[i].editDetails == true) {
+        this.grids[i].editDetails = false
+        this.grids[i].values = values
+        this.grids[i].columns = this.gridEditColumns
+        this.grids[i].rows = this.gridEditRows
+        this.conlang.grids = this.grids
+        await setDoc(this.conlangRef, this.conlang)
+        this.openGridEdit = false
+      } else {
+        this.grids[i].editDetails = true
+      }
+    },
+
+    closeGridEdit() {
+      this.openGridEdit = false
     },
   },
 }
