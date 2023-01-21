@@ -1,65 +1,61 @@
 <template>
-  <AuthenticationCheck>
-    <CBox p="5%">
-      <CHeading fontSize="6xl">
-        {{ conlang.name }} | {{ sectionText }}
-      </CHeading>
-      <CDivider borderWidth="0.15625rem" borderColor="gray" />
-      <CStack is-inline spacing-x="1%">
-        <CButton
-          w="49%"
-          borderRadius="1"
-          borderBottom="1px"
-          variant="ghost"
-          fontSize="xl"
-          variant-color="blue"
-          color="blue.600"
-          @click="switchToPhonology"
-        >
-          Phonology
-        </CButton>
-        <CButton
-          w="49%"
-          borderRadius="1"
-          borderBottom="1px"
-          variant="ghost"
-          fontSize="xl"
-          variant-color="blue"
-          color="blue.600"
-          @click="switchToGrammar"
-        >
-          Grammar
-        </CButton>
-        <CButton
-          w="49%"
-          borderRadius="1"
-          borderBottom="1px"
-          variant="ghost"
-          fontSize="xl"
-          variant-color="blue"
-          color="blue.600"
-          @click="switchToDictionary"
-        >
-          Dictionary
-        </CButton>
-      </CStack>
-      <Grammar
-        v-if="viewGrammar == true"
-        :viewer="user"
-        :conlangRef="conlangRef"
-      />
-      <Phonology
-        v-if="viewPhonology == true"
-        :viewer="user"
-        :conlangRef="conlangRef"
-      />
-      <Dictionary
-        v-if="viewDictionary == true"
-        :viewer="user"
-        :conlangRef="conlangRef"
-      />
-    </CBox>
-  </AuthenticationCheck>
+  <CBox p="5%">
+    <CHeading fontSize="6xl"> {{ conlang.name }} | {{ sectionText }} </CHeading>
+    <CDivider borderWidth="0.15625rem" borderColor="gray" />
+    <CStack is-inline spacing-x="1%">
+      <CButton
+        w="49%"
+        borderRadius="1"
+        borderBottom="1px"
+        variant="ghost"
+        fontSize="xl"
+        variant-color="blue"
+        color="blue.600"
+        @click="switchToPhonology"
+      >
+        Phonology
+      </CButton>
+      <CButton
+        w="49%"
+        borderRadius="1"
+        borderBottom="1px"
+        variant="ghost"
+        fontSize="xl"
+        variant-color="blue"
+        color="blue.600"
+        @click="switchToGrammar"
+      >
+        Grammar
+      </CButton>
+      <CButton
+        w="49%"
+        borderRadius="1"
+        borderBottom="1px"
+        variant="ghost"
+        fontSize="xl"
+        variant-color="blue"
+        color="blue.600"
+        @click="switchToDictionary"
+      >
+        Dictionary
+      </CButton>
+    </CStack>
+    <Grammar
+      v-if="viewGrammar == true"
+      :viewer="user"
+      :conlangRef="conlangRef"
+    />
+    <Phonology
+      v-if="viewPhonology == true"
+      :viewer="user"
+      :conlangRef="conlangRef"
+    />
+    <Dictionary
+      v-if="viewDictionary == true"
+      :viewer="user"
+      :conlangRef="conlangRef"
+    />
+  </CBox>
 </template>
 
 <script>
@@ -156,7 +152,8 @@ export default {
     data = data.data()
     data.dateCreated = this.date(data.dateCreated)
     this.conlang = data
-    this.user = auth.currentUser.email
+    this.user = auth.currentUser ? auth.currentUser.email : null
+    console.log(this.conlang)
   },
 }
 </script>

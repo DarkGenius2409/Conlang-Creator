@@ -13,7 +13,7 @@
           <CBox
             minW="30rem"
             maxW="30rem"
-            v-for="conlang in conlangs"
+            v-for="(conlang, i) in conlangs"
             :key="conlang.id"
           >
             <LangCard
@@ -31,7 +31,7 @@
                 <CModalCloseButton />
                 <CModalFooter>
                   <CButton
-                    @click="deleteConlang(conlang.id)"
+                    @click="deleteConlang(i)"
                     bg="red.600"
                     color="white"
                     mr="3"
@@ -174,6 +174,10 @@ export default {
       for (let i = 0; i < 21; i++) {
         vowels.push('')
       }
+      let values = []
+      for (let i = 0; i < 8; i++) {
+        values.push('')
+      }
       const data = {
         name: this.name,
         creator: auth.currentUser?.email,
@@ -181,14 +185,25 @@ export default {
         phonotacticRules: ['Sample Rule'],
         consonants,
         vowels,
-        grids: [],
+        grids: [
+          {
+            heading: 'Test Grid',
+            rows: 2,
+            columns: 4,
+            edit: false,
+            values,
+          },
+        ],
         syntaxRules: ['Sample Rule'],
+        words: [],
       }
       await setDoc(doc(db, 'conlangs', id), data)
       this.$router.push({ path: `/conlangs/${id}` })
     },
-    async deleteConlang(id) {
-      await deleteDoc(doc(db, 'conlangs', id))
+    async deleteConlang(i) {
+      console.log(i)
+      await deleteDoc(doc(db, 'conlangs', this.conlangs[i].id))
+      this.conlangs.splice(i, 1)
       this.isDeleteOpen = false
     },
   },
