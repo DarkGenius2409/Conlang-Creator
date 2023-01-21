@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CStack py="3%" pr="1%">
+    <CStack py="3%" pr="1%" pl="0" m="0">
       <CStack is-inline>
         <CText fontSize="3xl">Consonants</CText>
         <CButton
